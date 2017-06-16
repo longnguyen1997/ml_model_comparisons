@@ -4,6 +4,7 @@ from sklearn.metrics import accuracy_score
 import sklearn.linear_model as linear
 import sklearn.naive_bayes as bayes
 import sklearn.neural_network as neural
+import matplotlib.pyplot as plt
 
 def k_fold_cv(k, data, classifier=SVC()):
     # type: (int, tuple) -> list
@@ -54,3 +55,12 @@ def model_comparison_classification(k, data):
     models['Multilayered Perceptron'] = cv_results[3]
 
     return models
+
+def plot_model_comparison(data):
+    for k in data:
+        plt.plot(data[k], label = k)
+    plt.legend()
+    plt.title("10-Fold Cross-Validation Over Training Data (Theorem-Proving)")
+    plt.xlabel("Bin used as testing set")
+    plt.ylabel("Testing accuracy (%)")
+    plt.show()

@@ -1,8 +1,8 @@
 import numpy as np
 from ml_functions import model_comparison_classification as model_compare
+from ml_functions import plot_model_comparison as model_plot
 from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score
-import matplotlib.pyplot as plt
 
 def get_lines_labels(filename):
 
@@ -43,13 +43,7 @@ theorem_data_test = ([np.array(l) for l in lines_labels_test[0]],
 # Compare the different classifiers.
 theorem_models =  model_compare(10, theorem_data_train)
 
-for k in theorem_models:
-    plt.plot(theorem_models[k], label = k)
-plt.legend()
-plt.title("10-Fold Cross-Validation Over Training Data (Theorem-Proving)")
-plt.xlabel("Bin used as testing set")
-plt.ylabel("Testing accuracy (%)")
-plt.show()
+model_plot(theorem_models)
 
 # Take the average of the k bins.
 theorem_models = {k: np.average(theorem_models[k])
