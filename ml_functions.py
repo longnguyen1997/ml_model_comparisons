@@ -56,11 +56,11 @@ def model_comparison_classification(k, data):
 
     return models
 
-def plot_model_comparison(data):
+def plot_model_comparison(data, title, xlab, ylab):
     for k in data:
         plt.plot(data[k], label = k)
     plt.legend()
-    plt.title("10-Fold Cross-Validation Over Training Data (Theorem-Proving)")
-    plt.xlabel("Bin used as testing set")
-    plt.ylabel("Testing accuracy (%)")
+    plt.title(title)
+    plt.xlabel(xlab)
+    plt.ylabel(ylab)
     plt.show()

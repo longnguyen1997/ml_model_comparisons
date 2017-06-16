@@ -43,7 +43,8 @@ theorem_data_test = ([np.array(l) for l in lines_labels_test[0]],
 # Compare the different classifiers.
 theorem_models =  model_compare(10, theorem_data_train)
 
-model_plot(theorem_models)
+model_plot(theorem_models, "10-Fold Cross-Validation Over Training Data (Theorem-Proving)",
+           "Bin used as testing set", "Testing accuracy (%)")
 
 # Take the average of the k bins.
 theorem_models = {k: np.average(theorem_models[k])
